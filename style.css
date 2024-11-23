@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.package-card {
+    background-color: #f4f4f4; /* Abu-abu terang untuk kartu */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    max-width: 300px;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek hover lebih nyata */
+}
+
+
+
+.package-speed {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.package-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.package-details {
+    font-size: 1rem;
+    color: #555;
+}
+
+.package-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.btn-subscribe {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-subscribe:hover {
+    background-color: #cc0000;
+}
+
+.info-detail {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.info-detail:hover {
+    text-decoration: underline;
+}
+
+.package-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Agar elemen di tengah */
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
