@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <!-- Metadata and stylesheet links as before -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Description" content="Sobat IndiHome">
+    <meta name="Author" content="Telkomsel">
+    <meta name="Keywords" content="sobat,sobat indihome,indihome">
+    <title>Indihome Kudus</title>
+    <link rel="icon" href="https://sobat.indihome.co.id/assets/img/white-favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link id="style" href="https://sobat.indihome.co.id/assets/landingpage/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://sobat.indihome.co.id/assets/landingpage/css/global.css" rel="stylesheet">
+
+    <style>
+        .package-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            background-color: #fff;
+            max-width: 300px;
+        }
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+        .package-speed {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff0000;
+        }
+        .package-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #000;
+        }
+        .package-details {
+            font-size: 1rem;
+            color: #555;
+        }
+        .package-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+        }
+        .btn-subscribe {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .btn-subscribe:hover {
+            background-color: #cc0000;
+        }
+        .info-detail {
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .info-detail:hover {
+            text-decoration: underline;
+        }
+        .package-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+    </style>
+</head>
+
+<body class="main-body">
+    <nav class="navbar fixed-top">
+        <div class="container">
+            <img src="https://sobat.indihome.co.id/assets/landingpage/img/logo.svg" alt="Sobat IndiHome">
+            <div class="title-step justify-content-left justify-content-sm-center align-items-center d-none d-sm-none d-md-flex">
+                <span class="flag-number d-flex justify-content-center align-items-center"><span>1</span></span>
+                <span class="active">Pilih Paket</span>
+            </div>
+        </div>
+        <div class="title-step justify-content-left justify-content-sm-center align-items-center d-flex d-sm-flex d-md-none">
+            <span class="active">Pilih Paket</span>
+        </div>
+    </nav>
+
+    <div class="pilih-paket">
+        <div class="bg-indonesia">
+            <img src="https://sobat.indihome.co.id/assets/landingpage/img/indonesia.svg" alt="Sobat IndiHome" width="auto">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-4 d-none d-xs-none d-sm-none d-md-none d-lg-block">
+                    <div class="d-flex align-items-center gap-3" style="margin-left: 18px;">
+                        <div class="separator"></div>
+                        <div class="left-header">Selamat Datang di IndiHome</div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                    <div class="d-flex flex-column flex-sm-column flex-sm-column flex-md-row justify-content-between align-items-center gap-3 mb-3">
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-6">
+                            <p class="right-header">Paket Sesuai Kebutuhan Anda</p>
+                            <p class="right-subheader">Masukkan lokasi Anda untuk cek penawaran terbaik pada lokasi Anda !</p>
+                        </div>
+                        <div class="col-12 col-xs-12 col-sm-12 col-md-6 text-end">
+                            <select class="form-control custom-select w-100" id="modal-proinsi-select-top" aria-label="Default select example" onchange="showPackages()">
+                                <option value="" selected disabled>Pilih Area</option>
+                                <option value="Jepara">Jepara</option>
+                                <option value="Kudus">Kudus</option>
+                                <option value="Pati">Pati</option>
+                                <option value="Rembang">Rembang</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="package-list" class="col-12 mt-3 package-list">
+                    <!-- Daftar paket akan ditampilkan di sini -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var BASE_URL = "https://sobat.indihome.co.id/";
+        var ACT = "";
+        var MSG = ``;
+
+        function showPackages() {
+            var area = document.getElementById('modal-proinsi-select-top').value;
+            var packages = document.getElementById('package-list');
+
+            if (area) {
+                packages.innerHTML = `
+                    <div class="package-card">
+                        <div class="package-speed">10 Mbps</div>
+                        <div class="package-title">Paket EZnet 10 Mbps</div>
+                        <div class="package-details">Cocok digunakan untuk 3 perangkat</div>
+                        <div class="package-details">Biaya Pasang Rp166.500</div>
+                        <div class="package-details">Biaya Sudah Termasuk PPN</div>
+                        <div class="package-price">Rp166.500/bulan</div>
+                        <button class="btn-subscribe" onclick="subscribe('Paket EZnet 10 Mbps')">Berlangganan</button>
+                    </div>
+                    <div class="package-card">
+                        <div class="package-speed">30 Mbps</div>
+                        <div class="package-title">Paket JITU 2 30 Mbps</div>
+                        <div class="package-details">Cocok digunakan untuk 5 perangkat</div>
+                        <div class="package-details">Biaya Pasang Rp166.500</div>
+                        <div class="package-details">Biaya Sudah Termasuk PPN</div>
+                        <div class="package-price">Rp244.000/bulan</div>
+                        <button class="btn-subscribe" onclick="subscribe('Paket JITU 2 30 Mbps')">Berlangganan</button>
+                    </div>
+                    <div class="package-card">
+                        <div class="package-speed">30 Mbps</div>
+                        <div class="package-title">Paket JITU 1 30 Mbps</div>
+                        <div class="package-details">Cocok digunakan untuk 5 perangkat</div>
+                        <div class="package-details">Biaya Pasang Rp55.500</div>
+                        <div class="package-details">Biaya Sudah Termasuk PPN</div>
+                        <div class="package-price">Rp310.890/bulan</div>
+                        <button class="btn-subscribe" onclick="subscribe('Paket JITU 1 30 Mbps')">Berlangganan</button>
+                    </div>
+                    <div class="package-card">
+                        <div class="package-speed">50 Mbps</div>
+                        <div class="package-title">Paket JITU 1 50 Mbps</div>
+                        <div class="package-details">Cocok digunakan untuk 7 perangkat</div>
+                        <div class="package-details">Biaya Pasang GRATIS</div>
+                        <div class="package-details">Biaya Sudah Termasuk PPN</div>
+                        <div class="package-price">Rp331.000/bulan</div>
+                        <button class="btn-subscribe" onclick="subscribe('Paket JITU 1 50 Mbps')">Berlangganan</button>
+                    </div>
+                    <!-- Tambahkan lebih banyak paket di sini sesuai kebutuhan -->
+                `;
+            } else {
+                packages.innerHTML = '<p>Silakan pilih area terlebih dahulu.</p>';
+            }
+        }
+
+        function subscribe(packageTitle) {
+            var message = `Saya ingin berlangganan paket IndiHome dengan detail berikut: Paket: ${packageTitle}`;
+            var whatsappUrl = `https://api.whatsapp.com/send/?phone=6285256419818&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
