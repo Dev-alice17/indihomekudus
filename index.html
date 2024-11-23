@@ -130,17 +130,15 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        var BASE_URL = "https://sobat.indihome.co.id/";
-        var ACT = "";
-        var MSG = ``;
+    <div id="package-list"></div>
+<script>
+    function showPackages() {
+        var area = document.getElementById('modal-proinsi-select-top').value;
+        var packages = document.getElementById('package-list');
 
-        function showPackages() {
-            var area = document.getElementById('modal-proinsi-select-top').value;
-            var packages = document.getElementById('package-list');
+        if (area) {
+            packages.innerHTML = `
 
-            if (area) {
-                packages.innerHTML = `
                     <div class="package-card">
                         <div class="package-speed">10 Mbps</div>
                         <div class="package-title">Paket EZnet 10 Mbps</div>
@@ -177,18 +175,35 @@
                         <div class="package-price">Rp331.000/bulan</div>
                         <button class="btn-subscribe" onclick="subscribe('Paket JITU 1 50 Mbps')">Berlangganan</button>
                     </div>
-                    <!-- Tambahkan lebih banyak paket di sini sesuai kebutuhan -->
-                `;
-            } else {
-                packages.innerHTML = '<p>Silakan pilih area terlebih dahulu.</p>';
-            }
+            `;
+        } else {
+            packages.innerHTML = '<p>Silakan pilih area terlebih dahulu.</p>';
         }
+    }
 
-        function subscribe(packageTitle) {
-            var message = `Saya ingin berlangganan paket IndiHome dengan detail berikut: Paket: ${packageTitle}`;
-            var whatsappUrl = `https://api.whatsapp.com/send/?phone=6285256419818&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
-            window.open(whatsappUrl, '_blank');
+    function getLocation(packageTitle) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    subscribe(packageTitle, latitude, longitude);
+                },
+                (error) => {
+                    alert("Gagal mendapatkan lokasi. Pastikan izin lokasi diaktifkan.");
+                }
+            );
+        } else {
+            alert("Browser Anda tidak mendukung Geolocation.");
         }
-    </script>
+    }
+
+    function subscribe(packageTitle, latitude, longitude) {
+        var message = `Saya ingin berlangganan paket IndiHome dengan detail berikut:\nPaket: ${packageTitle}\nLokasi: https://www.google.com/maps?q=${latitude},${longitude}`;
+        var whatsappUrl = `https://api.whatsapp.com/send/?phone=6285256419818&text=${encodeURIComponent(message)}&type=phone_number&app_absent=0`;
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+
 </body>
 </html>
